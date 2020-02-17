@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Content from "./components/Content";
+import Counter from "./components/Counter";
+
+// const ind = [0,1]
+// const arr = [1,2]
+// const sumArr = (arr) => arr.reduce((partial_sum, a) => partial_sum + a,0);
+// const initData = {arr: arr, sum: sumArr(arr)}
+
+let elCounters = [{defaultValue:0, step:1}, {defaultValue:1, step:2}];
 
 function App() {
+    const defaultSum = elCounters.reduce( (sum, el) => sum + el.defaultValue, 0);
+    const [counter, setCounter] = useState(defaultSum);
+
+    const incrementCounter = (increment) => {
+        setCounter(counter + increment)
+    }
+
     const items = [{text: 'Home', link: 'goods-page'},
         {text: 'Goods', link: 'goods-page'},
         {text: 'Products', link: 'products-page'},
@@ -22,7 +37,17 @@ function App() {
     return (
     <div className="App">
       <Header items={items}/>
-      <Content/>
+      Total: {counter}
+      <hr/>
+        {elCounters.map((el,i) =>
+            <Counter
+                key={i}
+                num={el["defaultValue"]}
+                step = {el["step"]}
+                incrementCallback={ incrementCounter }
+            />
+        )}
+        <hr/>
       <Footer items={items} items2={items2} footerText={footerText}/>
     </div>
   );
