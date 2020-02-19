@@ -38,22 +38,22 @@ function App() {
         setCountersData([...counters].filter(function (el) {
             return el.name !== elName;
         }))
-        console.log('app '+counters);
+        // console.log('app '+counters);
     }
 
     const inputNameChangeHandler = event => {
         setCounterName(event.target.value);
-        console.log('adding name: '+ event.target.value);
+        // console.log('adding name: '+ event.target.value);
     }
 
     const inputInitialValueChangeHandler = event => {
         setCounterInitialValue(parseInt(event.target.value));
-        console.log('adding initial value: '+ parseInt(event.target.value));
+        // console.log('adding initial value: '+ parseInt(event.target.value));
     }
 
     const inputStepChangeHandler = event => {
         setCounterStep(parseInt(event.target.value));
-        console.log('adding counter step: '+ event.target.value);
+        // console.log('adding counter step: '+ event.target.value);
     }
 
     const counterAddHandler = () => {
@@ -100,6 +100,7 @@ function App() {
             <input
                 type="text"
                 placeholder="Name"
+                defaultValue=""
                 onChange={inputNameChangeHandler}
                 value={counterName}
             />

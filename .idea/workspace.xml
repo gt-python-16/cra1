@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90995516-ab96-4ffa-bf73-0226c6f0ab65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CounterItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Counters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CounterItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CounterItems.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +81,7 @@
       <updated>1580677501770</updated>
       <workItem from="1580677512537" duration="22858000" />
       <workItem from="1581142451656" duration="13749000" />
-      <workItem from="1581403464708" duration="65185000" />
+      <workItem from="1581403464708" duration="65765000" />
     </task>
     <servers />
   </component>
@@ -98,6 +97,10 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="269" y="51" key="CommitChangelistDialog2/0.23.1440.834@0.23.1440.834" timestamp="1581753912518" />
+    <state x="289" y="151" width="895" height="522" key="DiffContextDialog" timestamp="1582082155214">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="289" y="151" width="895" height="522" key="DiffContextDialog/0.23.1440.834@0.23.1440.834" timestamp="1582082155214" />
     <state width="1018" height="148" key="GridCell.Tab.0.bottom" timestamp="1581752667833">
       <screen x="0" y="23" width="1440" height="834" />
     </state>

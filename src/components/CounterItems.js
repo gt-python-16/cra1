@@ -26,10 +26,10 @@ const CounterItems = (props) => {
     const deleteCounterHandler =  () => {
         props.deleteCounter(props.name);
         props.incrementCallback(-elCount);
-        console.log(props.ind, props.counters, props.counters.length);
-        console.log(props.counters[props.ind].currentValue)
+        // console.log(props.ind, props.counters, props.counters.length);
+        // console.log(props.counters[props.ind].currentValue)
         setElCount(props.counters.length > props.ind+1 && props.counters[props.ind+1].currentValue);
-        console.log(props.counters)
+        // console.log(props.counters)
         props.updateData(props.ind, elCount - props.step);
         // setHasButtonBeenClicked(false);
     }
