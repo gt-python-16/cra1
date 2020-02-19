@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90995516-ab96-4ffa-bf73-0226c6f0ab65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CounterItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Counters.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,7 @@
       <updated>1580677501770</updated>
       <workItem from="1580677512537" duration="22858000" />
       <workItem from="1581142451656" duration="13749000" />
-      <workItem from="1581403464708" duration="39032000" />
+      <workItem from="1581403464708" duration="65185000" />
     </task>
     <servers />
   </component>
@@ -123,5 +122,9 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="600" y="185" width="648" height="552" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.834@0.23.1440.834" timestamp="1580693142514" />
+    <state x="519" y="108" width="673" height="708" key="find.popup" timestamp="1582074633225">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="519" y="108" width="673" height="708" key="find.popup/0.23.1440.834@0.23.1440.834" timestamp="1582074633225" />
   </component>
 </project>
