@@ -2,63 +2,78 @@ import React, {useState} from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Content from "./components/Content";
-import CounterItems from "./components/CounterItems";
+import Counter from "./components/Counter";
+// import ReactDOM from "react-dom";
+import CountersTotal from "./components/CountersTotal";
+import AddCounter from "./components/AddCounter";
 
+let elCounters = [{name: "First counter", initialValue: 0, step: 1, currentValue: 0},
+    {name: "Second counter", initialValue: 3, step: 2, currentValue: 3},
+    {name: "Next counter", initialValue: 1, step: 1, currentValue: 1}];
+
+// function promoteName(name, initialValue, step) {
+//     elCounters = [...elCounters].concat([{name: name, initialValue: initialValue, step: step}])
+//     ReactDOM.render(<App />, document.getElementById('root'));
+// }
 
 function App() {
-    let elCounters = [{name: "First counter", initialValue: 0, step: 1, currentValue: 0},
-        {name: "Second counter", initialValue: 3, step: 2, currentValue: 3},
-        {name: "Next counter", initialValue: 1, step: 1, currentValue: 1}];
+
     const [counterList, setCounterList] = useState(elCounters);
-    const [counterName, setCounterName] = useState('');
-    const [counterInitialValue, setCounterInitialValue] = useState(0);
-    const [counterStep, setCounterStep] = useState(1);
-    const [counter, setCounter] = useState(counterList.reduce( (sum, el) =>
+    const [counter, setCounter] = useState(elCounters.reduce( (sum, el) =>
         sum + el.initialValue, 0));
-    const [counters, setCountersData] = useState(elCounters);
+    const [hasResetButtonBeenClicked, setResetButtonHasBeenClicked] = useState(false);
+    // hasButtonBeenClicked, setHasButtonBeenClicked
+    // const [counters, setCountersData] = useState(elCounters);
 
     const incrementCounter = (increment) => {
         setCounter(counter + increment)
     }
 
-    const updateData = (index, newValue) => {
-        console.log(index, newValue, counters);
-        setCountersData([
-            ...counters.slice(0,index),
-            {...counters[index] , currentValue: newValue},
-            ...counters.slice(index+1)
-        ]);
-        console.log(counters);
+    function resetCounter(value) {
+        if (value){
+            setResetButtonHasBeenClicked(true);
+        }
+    }
+
+    function buttonClicked(name) {
+        console.log('CLICKED!' + name)
+    }
+
+    // function setResetNotClicked() {
+    //     setResetButtonHasBeenClicked(false);
+    // }
+
+    const resetTotalCount = (value) => {
+        if (value) {
+            setCounter(counterList.reduce( (sum, el) =>
+                sum + el.initialValue, 0));
+            setResetButtonHasBeenClicked(true);
+        }
     }
 
     const deleteCounter = (elName) => {
+        console.log('before '+counterList);
         setCounterList([...counterList].filter(function (el) {
             return el.name !== elName;
         }));
-        setCountersData([...counters].filter(function (el) {
-            return el.name !== elName;
-        }))
+        console.log('after '+counterList);
+        // setCounter(counterList.reduce( (sum, el) =>
+        //     sum + el.initialValue, 0));
+        // setCountersData([...counters].filter(function (el) {
+        //     return el.name !== elName;
+        // }))
         // console.log('app '+counters);
     }
 
-    const inputNameChangeHandler = event => {
-        setCounterName(event.target.value);
-        // console.log('adding name: '+ event.target.value);
-    }
-
-    const inputInitialValueChangeHandler = event => {
-        setCounterInitialValue(parseInt(event.target.value));
-        // console.log('adding initial value: '+ parseInt(event.target.value));
-    }
-
-    const inputStepChangeHandler = event => {
-        setCounterStep(parseInt(event.target.value));
-        // console.log('adding counter step: '+ event.target.value);
-    }
-
-    const counterAddHandler = () => {
-        setCounterList([...counterList].concat([{name: counterName, initialValue: counterInitialValue, step: counterStep}]));
-        setCounter(counter+counterInitialValue);
+     const addNewCounter = (counterName, counterInitialValue, counterStep) => {
+        setCounterList([...counterList].concat([{
+            name: counterName,
+            initialValue: counterInitialValue,
+            step: counterStep
+        }]));
+        setCounter(counter + counterInitialValue);
+        // setTotal(counterList.map(el => el.number).reduce((a, b) => a + b));
+        //console.log(counterList);
     }
 
     const items = [{text: 'Home', link: 'goods-page'},
@@ -77,55 +92,41 @@ function App() {
         "with React, a best-in-class JavaScript library for building user interfaces."
 
     return (
-    <div className="App">
-      <Header items={items}/>
-      Total: {counter}
-      <hr/>
-        {counterList.map((el,i) =>
-            <CounterItems
-                name={el["name"]}
-                key={i}
-                num={el["initialValue"]}
-                step = {el["step"]}
-                ind={i}
-                incrementCallback={ incrementCounter }
-                deleteCounter={ deleteCounter }
-                updateData={ updateData }
-                counters={ counters }
+        <div className="App">
+            <Header items={items}/>
+            {/*<Content bc={buttonClicked}/>*/}
+            <CountersTotal
+                counter={counter}
+                setCounter={setCounter}
+                resetCounter={resetCounter}
+                resetTotalCount={resetTotalCount}
+                setResetButtonHasBeenClicked={setResetButtonHasBeenClicked}
             />
-        )}
-        <hr/>
-        <div>
-            <span>Add new counter</span>
-            <input
-                type="text"
-                placeholder="Name"
-                defaultValue=""
-                onChange={inputNameChangeHandler}
-                value={counterName}
-            />
-            <span> Initial value </span>
-            <input
-                type="number"
-                placeholder="0"
-                onChange={inputInitialValueChangeHandler}
-                value={counterInitialValue}
-            />
-            <span> Counter step </span>
-            <input
-                type="number"
-                placeholder="1"
-                onChange={inputStepChangeHandler}
-                value={counterStep}
-            />
-            <button type="button" onClick={counterAddHandler}>Add</button>
+            Total: {counter}
+            <p>Counters</p>
+            <hr/>
+            {counterList.map((el, i) =>
+                <Counter
+                    name={el["name"]}
+                    key={i}
+                    num={el["initialValue"]}
+                    step={el["step"]}
+                    ind={i}
+                    incrementCounter={incrementCounter}
+                    deleteCounter={deleteCounter}
+                    hasResetButtonBeenClicked={hasResetButtonBeenClicked}
+                    setResetButtonHasBeenClicked={setResetButtonHasBeenClicked}
+                    // updateData={ updateData }
+                    // counters={ counters }
+                />
+            )}
+            <hr/>
+            <p>Add new counter</p>
+            < AddCounter addNewCounter={ addNewCounter }/>
+            <hr/>
+            <Footer items={items} items2={items2} footerText={footerText}/>
         </div>
-        <hr/>
-
-
-      <Footer items={items} items2={items2} footerText={footerText}/>
-    </div>
-  );
+    );
 }
 
 export default App;
